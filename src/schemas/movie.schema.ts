@@ -3,9 +3,9 @@ import { Column, Model, Table } from 'sequelize-typescript';
 @Table
 export class MovieSchema extends Model {
   @Column
-  movieName: string;
+  title: string;
   @Column
-  description: string;
+  overview: string;
   @Column
-  date: string;
+  imgUrl: string;
 }
