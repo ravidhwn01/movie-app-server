@@ -17,4 +17,12 @@ export class MovieService {
     // return this.repository.create(response.data);
     return response.data;
   }
+
+  getWatchListData(getWatchListData: MovieSchema) {
+    console.log(getWatchListData);
+    return this.repository.create(getWatchListData as any);
+  }
+  getWatchListMovie() {
+    return this.repository.findAll();
+  }
 }
