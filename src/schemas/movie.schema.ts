@@ -1,11 +1,15 @@
-import { Column, Model, Table } from 'sequelize-typescript';
+import { STRING, TEXT, BOOLEAN } from 'sequelize';
+import { Column, Default, Model, Table } from 'sequelize-typescript';
 
 @Table
 export class MovieSchema extends Model {
-  @Column
+  @Column(TEXT)
   title: string;
-  @Column
+  @Column(TEXT)
   overview: string;
-  @Column
+  @Column(TEXT)
   imgUrl: string;
+  @Default(false)
+  @Column(BOOLEAN)
+  isWatched: boolean;
 }

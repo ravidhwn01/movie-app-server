@@ -37,3 +37,9 @@ export enum OriginalLanguage {
   Ja = 'ja',
   Ko = 'ko',
 }
+
+export interface CreateMovieDto {
+  title: string;
+  overview: string;
+  imgUrl: string;
+}

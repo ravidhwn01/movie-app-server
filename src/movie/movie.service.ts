@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import axios from 'axios';
 import { Repository, Sequelize } from 'sequelize-typescript';
 import { MovieSchema } from 'src/schemas/movie.schema';
+import { CreateMovieDto } from 'src/types/movie.types';
 
 @Injectable()
 export class MovieService {
@@ -18,11 +19,19 @@ export class MovieService {
     return response.data;
   }
 
-  getWatchListData(getWatchListData: MovieSchema) {
-    console.log(getWatchListData);
-    return this.repository.create(getWatchListData as any);
+  getWatchListData(createMovieDto: CreateMovieDto) {
+    console.log(createMovieDto);
+    return this.repository.create({
+      title: createMovieDto.title,
+      overview: createMovieDto.overview,
+      imgUrl: createMovieDto.imgUrl,
+    });
   }
   getWatchListMovie() {
     return this.repository.findAll();
+  }
+
+  markWatched(id: number) {
+    return this.repository.update({ isWatched: true }, { where: { id: id } });
   }
 }

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
 import { MovieSchema } from 'src/schemas/movie.schema';
 import { MovieService } from './movie.service';
 
@@ -18,5 +18,9 @@ export class MovieController {
   @Get('watchlist')
   getWatchListMovies() {
     return this.movieService.getWatchListMovie();
+  }
+  @Patch('markwatched/:id')
+  markWatched(@Param('id') id: number) {
+    return this.movieService.markWatched(id);
   }
 }
